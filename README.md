@@ -1,4 +1,4 @@
-# DevSecOps16 Course Repository
+# DevSecOps18 Course Repository
 
 Welcome to the DevSecOps course repository at BIU! This repository is organized to help you learn DevOps tools 
 and practices through lessons and hands-on labs.
