@@ -37,3 +37,13 @@ Write a program that checks if a password is strong. A strong password must be a
 
 Ask the user to insert his balance and the amount that they want to withdraw
 ATM program allows the user to withdraw a specified amount of money only once. If the withdrawal amount is a valid multiple of 10 and the user has sufficient funds, the withdrawal will be processed. If not, the program will display an appropriate message and stop.
+
+# Challenge:
+Write a Python program that accepts an addition problem and prints whether it is correct or not. For example, if the input is:
+```bash
+insert the first number : 5
+insert the second number : 3
+insert the operation : +
+insert the your solution: 8
+True ......
+```
