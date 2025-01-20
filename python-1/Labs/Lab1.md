@@ -82,5 +82,5 @@ Example Input/Output:
 ```bash
 Enter a sentence: Python is awesome!
 Enter a number: 3
-Extracted characters: 'tniasoe'
+Extracted characters: 't  se'
 ```
