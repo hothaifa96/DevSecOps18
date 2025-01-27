@@ -8,5 +8,5 @@ Submission Steps:
 5- Add comments if needed 
 6- Ensure your code is free of errors and runs smoothly.
 
-the assignment in the link :
+the assignment in the link : https://github.com/hothaifa96/DevSecOps18/blob/python/homework-1/homework-1.pdf
 mail : h.dso.biu@gmail.com
