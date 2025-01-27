@@ -1,0 +1,12 @@
+Please complete the assignment and upload your code to GitHub by February 6th. Once uploaded, share the repository link via email.
+
+Submission Steps:
+1- Complete the assignment 
+2- Push your code to a public GitHub repository.
+3- Share the GitHub repository link via email.
+4- Ensure your code is well-structured, readable, and follows best practices.
+5- Add comments if needed 
+6- Ensure your code is free of errors and runs smoothly.
+
+the assignment in the link :
+mail : h.dso.biu@gmail.com
