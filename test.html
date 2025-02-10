@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Menu</title>
+  <style>
+    .topMenu {
+      width: 70%;
+      font-family: "Greycliff", sans-serif;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.1vw;
+    }
+
+    .buttonn {
+      margin: 1vh;
+      color: white;
+      border-radius: 1vh;
+      background-color: #1f1f51;
+      border: none;
+      padding: 1vh 1.5vw;
+      font-size: 16px;
+      font-weight: bold;
+      width: 9vw;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .buttonn:hover {
+      background-color: #f57e27;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: 9vw;
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .modall, .modalll {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modall-content, .modalll-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      font-family: "Greycliff", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="topMenu">
+    <div id="mainView" class="buttonContainer">
+      <div class="dropdown">
+        <button class="buttonn">תפריט ראשי</button>
+        <div class="dropdown-content">
+          <button class="buttonn" onclick="openUrl('https://apps.amalgroup.co.il/')">אזור אישי</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="buttonn" onclick="openUrl('https://amalgroup.synerioncloud.com/synerionweb')">נוכחות</button>
+      </div>
+      <div class="dropdown">
+        <button class="buttonn">פתיחת קריאה</button>
+        <div class="dropdown-content">
+          <button class="buttonn" onclick="openUrl('https://hd.amalgroup.co.il')">מערכות מידע</button>
+          <button class="buttonn" onclick="openUrl('https://portal.visitt.io/org')">תפעול</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="buttonn">ניהול ידע</button>
+        <div class="dropdown-content">
+          <button class="buttonn" onclick="showUnderConstruction1()">קורסים ולומדות</button>
+          <button class="buttonn" onclick="showUnderConstruction()">סקרים</button>
+          <button class="buttonn" onclick="openUrl('https://hd.amalgroup.co.il/KBamal/kb.html')">טפסים</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="buttonn">אודות עמל</button>
+        <div class="dropdown-content">
+          <button class="buttonn" onclick="openUrl('https://amalsiuditgroup.sharepoint.com/sites/Portal/SitePages/%D7%9E%D7%91%D7%A0%D7%94-%D7%90%D7%A8%D7%92%D7%95%D7%A0%D7%99.aspx')">מבנה ארגוני</button>
+          <button class="buttonn" onclick="openUrl('https://amalsiuditgroup.sharepoint.com/sites/Portal/SitePages/chart.aspx')">אלפון חברה</button>
+        </div>
+      </div>
+    </div>
+    <div id="underConstructionModal" class="modall">
+      <div class="modall-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>פונקציה זו נמצאת כרגע בבנייה</p>
+        <button class="buttonn" onclick="closeModal()">סגור</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    function openUrl(url) {
+      window.open(url, "_blank");
+    }
+    function showUnderConstruction() {
+      document.getElementById("underConstructionModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("underConstructionModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById("underConstructionModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
