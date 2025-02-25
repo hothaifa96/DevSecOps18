@@ -1,4 +1,4 @@
-# REST API LAB
+# REST API LAB and files
 
 ## LAB
 
@@ -24,3 +24,6 @@ for example
     user => "lLeanne Graham"
 
 ```
+
+
+## create a python code to write all the numbers from 1 to 10 to a txt file
