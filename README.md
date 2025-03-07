@@ -1,4 +1,4 @@
-# DevSecOps16 Course Repository
+# DevSecOps18 Course Repository
 
 Welcome to the DevSecOps course repository at BIU! This repository is organized to help you learn DevOps tools 
 and practices through lessons and hands-on labs.
@@ -12,6 +12,7 @@ will contain all relevant code and resources.
 ### Subjects and Branches
 - [Git and GitHub](https://github.com/hothaifa96/DevSecOps18/tree/git)
 - [Python](https://github.com/hothaifa96/DevSecOps18/tree/python)
+- [Bash scripting](https://github.com/hothaifa96/DevSecOps18/tree/bash)
 - [Docker](https://github.com/hothaifa96/DevSecOps18/tree/docker)
 - [Kubernetes](https://github.com/hothaifa96/DevSecOps18/tree/kubernetes)
 - [Prometheus](https://github.com/hothaifa96/DevSecOps18/tree/prometheus)
