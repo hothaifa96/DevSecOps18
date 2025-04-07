@@ -1,0 +1,14 @@
+{
+  "name": "tasks-api",
+  "version": "1.0.0",
+  "description": "Backend API for Tasks application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7",
+    "cors": "^2.8.5"
+  }
+}
