@@ -34,12 +34,12 @@
 
 .task-form button {
   padding: 8px;
-  background-color: #4caf50;
+  background-color: #0152f5;
   color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+  border: solid salmon 3px;
+  border-radius: 20%;
+  cursor: progress;
+  font-size: 100px;
 }
 
 .tasks-container {

@@ -8,8 +8,9 @@ import os
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend
 
+# hostname = os.environ("HOST")
 # Connect to MongoDB
-client = MongoClient('mongodb://tasks-db:27017/')
+client = MongoClient('mongodb://tasks-db:27017/') # replace with container ip -172.21.0.3
 db = client['tasksdb']
 tasks_collection = db['tasks']
 
@@ -84,4 +85,4 @@ def update_task(task_id):
         return jsonify({"message": str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    app.run(host='0.0.0.0', port=5050, debug=True)

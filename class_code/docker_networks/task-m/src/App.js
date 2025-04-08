@@ -6,7 +6,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const API_URL = "http://localhost:3000/api/tasks";
+  const API_URL = "http://localhost:5050/api/tasks";
 
   useEffect(() => {
     fetchTasks();
