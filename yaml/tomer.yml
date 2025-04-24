@@ -1,0 +1,17 @@
+name: Tomer
+age: 26
+phone-number: 0526618010
+single: False
+cars:
+  - audi s3
+  - bmw 320
+  - alfa romeo
+child:
+  name: David
+  age: 3
+  phone-number: 0526618011
+  single: True
+  emails:
+   - david@gmail.com
+   - david1@hotmail.com
+email: tomer@gmail.com
