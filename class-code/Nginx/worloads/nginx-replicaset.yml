@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frotend
+      app: nginx
+  template:
+    # pod decliration
+    metadata:
+      name: test1
+      labels:
+        tier: frotend
+        app: nginx
+    spec:
+      containers:
+       - name: ngix
+         image: nginx:latest
+         ports:
+          - containerPort: 80

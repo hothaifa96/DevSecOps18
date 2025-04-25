@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-rs
+  labels:
+    app: deplotment
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+        maxSurge: 1
+        maxUnavailable: 0
+  selector:
+    matchLabels:
+      tier: frotend
+      app: nginx
+  template:
+    # pod decliration
+    metadata:
+      name: test1
+      labels:
+        tier: frotend
+        app: nginx
+    spec:
+      containers:
+       - name: ngix
+         image: nginx:latest
+         ports:
+          - containerPort: 80
