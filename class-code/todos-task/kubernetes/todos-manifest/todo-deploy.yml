@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todos-api-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todos
+  template:
+    metadata:
+      labels:
+        app: todos
+    spec:
+      containers:
+      - name: todos-container
+        image: hothaifaz11/todos-api
+        ports:
+        - containerPort: 5003
+        env:
+        - name: USERS_API_URL
+          value: "http://users-svc.default:5001"
+        - name: AUTH_API_URL
+          value: "http://auth-svc.default:5002"

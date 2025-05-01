@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-api-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth-container
+        image: hothaifaz11/auth-api
+        ports:
+        - containerPort: 5002
+        env:
+        - name: USERS_API_URL
+          value: "http://users-svc.default:5001"

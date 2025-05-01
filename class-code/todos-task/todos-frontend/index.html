@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8s Microservices Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kubernetes Microservices</h1>
+            
+            <div class="status-container">
+                <div id="users-status" class="status-badge">Users: Loading...</div>
+                <div id="auth-status" class="status-badge">Auth: Loading...</div>
+                <div id="todos-status" class="status-badge">Todos: Loading...</div>
+            </div>
+        </header>
+
+        <div id="login-container" class="panel">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password (Email):</label>
+                    <input type="text" id="password" required>
+                </div>
+                <button type="submit" class="btn primary">Login</button>
+            </form>
+
+            <div class="sample-users">
+                <h3>Sample Users</h3>
+                <ul>
+                    <li><strong>chen</strong> / 1@1.com</li>
+                    <li><strong>david</strong> / 2@2.com</li>
+                    <li><strong>omer</strong> / 3@3.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="todos-container" class="panel hidden">
+            <div class="user-bar">
+                <h2>Welcome, <span id="user-name">User</span>!</h2>
+                <button id="logout-btn" class="btn secondary">Logout</button>
+            </div>
+
+            <div class="todos-form">
+                <h3>Add New Todo</h3>
+                <form id="todo-form">
+                    <div class="form-group">
+                        <input type="text" id="todo-title" placeholder="Enter todo title..." required>
+                        <button type="submit" class="btn primary">Add</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="todos-list">
+                <h3>Your Todos</h3>
+                <div id="todos-list" class="todos">
+                    <!-- Todos will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
