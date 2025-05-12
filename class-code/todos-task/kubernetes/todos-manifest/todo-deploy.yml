@@ -19,6 +19,6 @@ spec:
         - containerPort: 5003
         env:
         - name: USERS_API_URL
-          value: "http://users-svc.default:5001"
+          value: "http://users-svc.users:5001"
         - name: AUTH_API_URL
           value: "http://auth-svc.default:5002"

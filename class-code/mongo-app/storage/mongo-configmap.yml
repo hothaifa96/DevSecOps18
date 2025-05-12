@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-cm
+  namespace: mongo
+data:
+  database_url: mongo-svc
