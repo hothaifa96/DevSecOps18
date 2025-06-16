@@ -1,0 +1,42 @@
+pipeline{
+    agent any
+    environments{
+        
+    }
+    stages{
+        stage('clonning'){
+            // stage 1 
+            steps{
+               git branch: 'main', url: 'https://github.com/devopsPRO27/ips'
+            }
+        } 
+        
+        
+        stage('check'){
+            steps{
+                sh 'ls -al'
+                sh 'mkdir hodi'
+                dir('hodi'){
+                    sh 'ls -al'
+                }
+                retry(3){
+                    mkdir(dir:"hodi")
+                }
+            }
+        }
+        stage('cleanup'){}
+    }
+    post{
+        always{
+            sh 'rm -fr *'
+        }
+
+        success{
+            echo 'wooooooow'
+        }
+        failure{
+            echo 'try again'
+        }
+
+    }
+}

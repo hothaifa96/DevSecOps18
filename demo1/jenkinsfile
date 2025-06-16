@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    // agent none
+    // agent {label 'example'}
+    // agent {docker {image ''}}
+    stages{
+        stage('A'){
+            // stage 1 
+            steps{
+               echo 'hello'
+            }
+        } 
+        stage('B'){
+            // stage 2
+            steps{
+                sh 'date > date.txt'
+                sh 'echo finished'
+            }
+        }
+        stage('C'){
+            // stage 3
+            steps{
+                sh 'ls -al'
+                sh 'echo stage3 done'
+            }
+        }
+    }
+}

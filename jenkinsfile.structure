@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages{
+        stage('checkout project'){
+            steps{
+                sh 'git clone https://github.com/devopsPRO27/movies-api'
+            }
+        }
+        stage('building'){ 
+            steps{
+                echo "****** building the app ******"
+            }
+        }
+        stage('testing'){ 
+            steps{
+                echo "****** building the app ******"
+            }
+        }
+        stage('deploy'){ 
+            steps{
+                echo "****** building the app ******"
+            }
+        }
+    }
+}
