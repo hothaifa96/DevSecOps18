@@ -1,0 +1,185 @@
+pipeline{
+    agent any
+    stages{
+        stage("clonning"){¸
+            parallel{
+                stage("frontend"){
+                    steps{
+                        echo "====++++clone frontend repository ++++===="
+                        echo "git clone https://github.com./peakyblinder/frontend"
+                    }
+                }
+                stage("api gateway"){
+                    steps{
+                        echo "====++++clone API GATEWAY repository ++++===="
+                        echo "git clone https://github.com./peakyblinder/apigatway"
+                    }
+                }
+                stage("user service"){
+                    steps{
+                        echo "====++++clone user service repository ++++===="
+                        echo "git clone https://github.com./peakyblinder/users"
+                    }
+                }
+                stage("inventory service"){
+                    steps{
+                        echo "====++++clone inventory service repository ++++===="
+                        echo "git clone https://github.com./peakyblinder/inventory"
+                    }
+                }
+                stage("database"){
+                    steps{
+                        echo "====++++clone database script repository ++++===="
+                        echo "git clone https://github.com./peakyblinder/database"
+                    }
+                }
+            }
+        }
+        stage("preparing env"){
+            parallel{
+                stage("frontend dependinces"){
+                   parallel{
+                    stage('node'){
+                        steps{
+                            echo '========+++++ checking node installation +++++========'
+                            echo ' sh "apt update && install node -y " '
+                        }
+                    }
+                    stage('npm'){
+                        steps{
+                            echo '========+++++ checking npm installation +++++========'
+                            echo ' sh "npm --version " '
+                        }
+                    }
+                   }
+                }
+                stage("api gateway dependinces"){
+                    parallel{
+                    stage('node'){
+                        steps{
+                            echo '========+++++ checking node installation +++++========'
+                            echo ' sh "apt update && install node -y " '
+                        }
+                    }
+                    stage('npm'){
+                        steps{
+                            echo '========+++++ checking npm installation +++++========'
+                            echo ' sh "npm --version " '
+                        }
+                    }
+                   }
+                }
+                stage("user service dependinces"){
+                    parallel{
+                    stage('python3'){
+                        steps{
+                            echo '========+++++ checking python installation +++++========'
+                            echo ' sh "apt update && install python3 -y " '
+                        }
+                    }
+                    stage('pip'){
+                        steps{
+                            echo '========+++++ checking pip installation +++++========'
+                            echo ' sh "apt update && install python-pip -y  " '
+                        }
+                    }
+                   }
+                }
+                stage("inventory service"){
+                    parallel{
+                    stage('java'){
+                        steps{
+                            echo '========+++++ checking node java +++++========'
+                            echo ' sh "javac --version" '
+                        }
+                    }
+                   }
+                }
+                stage("database"){
+                    parallel{
+                         stage('postgresql'){
+                            steps{
+                                 echo '========+++++ checking postgres installation +++++========'
+                            echo ' sh "pgql --version" '
+                            }
+                         }
+                    }
+                    }
+            }
+        }
+        stage("building"){
+            parallel{
+                stage("frontend"){
+                    steps{
+                        echo "====++++building frontend image ++++===="
+                        echo "docker build -t frontend:v${env.build_number} -f ./frontend/Dockderfile ."
+                    }
+                }
+                stage("api gateway"){
+                    steps{
+                                echo "====++++building apigateway image ++++===="
+                                echo "docker build -t apigateway -f ./apigateway/Dockderfile ."
+                    }
+                }
+                stage("user service"){
+                     steps{
+                                echo "====++++building users image ++++===="
+                                echo "docker build -t users -f ./users/Dockderfile ."
+                    }
+                }
+                stage("inventory service"){
+                    steps{
+                                echo "====++++building inventory image ++++===="
+                                echo "docker build -t inventory -f ./inventory/Dockderfile ."
+                    }
+                }
+                stage("database"){
+                   steps{
+                                echo "====++++building database image ++++===="
+                                echo "docker build -t database -f ./database/Dockderfile ."
+                    }
+                }
+            }
+        }
+        stage("testing "){
+            steps{
+                echo "========running comopse app========"
+                echo ' sh "compose -f peakyblinder.yml up -d " '
+                echo ' sh "sleep 30" '
+                echo "================checking api gatewat heathiness================="
+                echo ' sh "curl http://locahost:50001/healthy"  ' // port for the api gateway is 5001
+                echo "================checking database heathiness==================="
+                echo ' sh "docker exec -u root database pgql is_ready"  ' // pgsql is_ready
+
+                echo 'sh "./test.sh > report.txt" ' 
+                eco  'sh "aws s3 sync report.txt bucketname:/reports/report-$date.txt" '
+            }
+        }
+        stage("push to registry"){
+            steps{
+                echo "========pushing the images to docker========"
+                withcredintials(id:hothaifaID,username: user password:passwrd){
+                    echo 'sh "docker login -u ${user} -p ${passowrd}" ' // dockerhub ecr .... docker login
+
+                    echo '+====== pushing frontend ======+'
+                    echo ' "docker tag-  dokcer push frontend" ' 
+                    echo '+====== pushing api gateway ======+'
+                    echo ' "dokcer push frontend" ' 
+                    echo '+====== pushing users ======+'
+                    echo ' "dokcer push frontend" ' 
+                    echo '+====== pushing inventory ======+'
+                    echo ' "dokcer push frontend" ' 
+                    echo '+====== pushing database ======+'
+                    echo ' "dokcer push frontend" ' 
+                }
+
+            }
+        }
+        stage("deploy"){
+            steps{
+                echo "========ssh to ec2========"
+                echo "sh '' "
+            }
+        }
+    }
+}
